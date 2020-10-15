@@ -22,4 +22,11 @@ end
 
 #PlayingBoard
 #- Create a class for the playing board
-#- Create a initialize method that sets up the board
+class PlayingBoard
+  #- Create a initialize method that sets up the board
+  def initialize
+    board = [[1,2,3],
+             [4,5,6],
+             [7,8,9]]
+  end
+end
