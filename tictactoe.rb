@@ -6,9 +6,9 @@ class Player
   #- Create a initialize method which includes a symbol to play with
   def initialize
     if @@player_count == 0
-      @symbol = :x
+      @symbol = :X
     elsif @@player_count == 1
-      @symbol = :o
+      @symbol = :O
     else
       puts "Tic Tac Toe can only be played by two players"
     end
@@ -18,8 +18,8 @@ class Player
   #- Create a method that allows a player to place a symbol on the playing board (the place on the playing board is the argument) 
   def place_symbol_at(position)
     #	- Ask the players for input (gets.chomp)
-    puts "At what position do you want place to place #{symbol}"
-    position = gets.chomp
+    puts "At what position do you want place to place an #{symbol}?"
+
 #	- Substitute one space on the board with the symbol
 #	- Create a new method that, after placing each symbol, checks whether the current player has three symbols in a row
   end
@@ -41,3 +41,6 @@ player1 = Player.new
 p player1.symbol
 player2 = Player.new
 p player2.symbol
+position = gets.chomp
+player1.place_symbol_at(position)
+player2.place_symbol_at(position)
