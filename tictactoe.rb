@@ -1,3 +1,9 @@
+class Game
+  def initialize
+    @board = PlayingBoard.new
+  end
+end
+
 # Create a class for the players
 class Player
   attr_reader :symbol
