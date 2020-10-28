@@ -18,9 +18,8 @@ class Player
   #- Create a method that allows a player to place a symbol on the playing board (the place on the playing board is the argument) 
   def place_symbol_at(position)
     #	- Ask the players for input (gets.chomp)
-    puts "At what position do you want place to place an #{symbol}?"
-
 #	- Substitute one space on the board with the symbol
+
 #	- Create a new method that, after placing each symbol, checks whether the current player has three symbols in a row
   end
 end
@@ -38,9 +37,12 @@ class PlayingBoard
 end
 
 player1 = Player.new
-p player1.symbol
+puts "Player 1 has the symbol #{player1.symbol}"
 player2 = Player.new
-p player2.symbol
+puts "Player 2 has the symbol #{player2.symbol}"
+puts "Player 1, at what position do you want place to place an #{player1.symbol}?"
 position = gets.chomp
 player1.place_symbol_at(position)
+puts "Player 2, at what position do you want place to place an #{player2.symbol}?"
+position = gets.chomp
 player2.place_symbol_at(position)
