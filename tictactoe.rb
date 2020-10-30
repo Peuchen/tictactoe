@@ -1,7 +1,7 @@
 class Game
   attr_accessor :board
   def initialize
-    @board = PlayingBoard.new
+    $board = "1 2 3\n4 5 6\n7 8 9"
     @player1 = Player.new
     puts "Player 1 has the symbol #{@player1.symbol}"
     @player2 = Player.new
@@ -9,6 +9,7 @@ class Game
   end
 
   def play
+    puts $board
     puts "Player 1, at what position do you want place to place an #{@player1.symbol}?"
     position = gets.chomp
     @player1.place_symbol_at(position)
@@ -37,22 +38,12 @@ class Player
 
   #- Create a method that allows a player to place a symbol on the playing board (the place on the playing board is the argument) 
   def place_symbol_at(position)
+    @position = position
+    $board = $board.sub(position.to_s, self.symbol.to_s)
+    puts $board
     #	- Ask the players for input (gets.chomp)
 #	- Substitute one space on the board with the symbol
-
 #	- Create a new method that, after placing each symbol, checks whether the current player has three symbols in a row
-  end
-end
-
-
-#PlayingBoard
-#- Create a class for the playing board
-class PlayingBoard
-  #- Create a initialize method that sets up the board
-  def initialize
-    board = [[1,2,3],
-             [4,5,6],
-             [7,8,9]]
   end
 end
 
