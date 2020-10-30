@@ -1,6 +1,20 @@
 class Game
+  attr_accessor :board
   def initialize
     @board = PlayingBoard.new
+    @player1 = Player.new
+    puts "Player 1 has the symbol #{@player1.symbol}"
+    @player2 = Player.new
+    puts "Player 2 has the symbol #{@player2.symbol}"
+  end
+
+  def play
+    puts "Player 1, at what position do you want place to place an #{@player1.symbol}?"
+    position = gets.chomp
+    @player1.place_symbol_at(position)
+    puts "Player 2, at what position do you want place to place an #{@player2.symbol}?"
+    position = gets.chomp
+    @player2.place_symbol_at(position)
   end
 end
 
@@ -42,13 +56,5 @@ class PlayingBoard
   end
 end
 
-player1 = Player.new
-puts "Player 1 has the symbol #{player1.symbol}"
-player2 = Player.new
-puts "Player 2 has the symbol #{player2.symbol}"
-puts "Player 1, at what position do you want place to place an #{player1.symbol}?"
-position = gets.chomp
-player1.place_symbol_at(position)
-puts "Player 2, at what position do you want place to place an #{player2.symbol}?"
-position = gets.chomp
-player2.place_symbol_at(position)
+new_game = Game.new
+new_game.play
