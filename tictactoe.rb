@@ -39,11 +39,11 @@ class Player
   #- Create a method that allows a player to place a symbol on the playing board (the place on the playing board is the argument) 
   def place_symbol_at(position)
     @position = position
+    #	- Substitute one space on the board with the symbol
     $board = $board.sub(position.to_s, self.symbol.to_s)
     puts $board
-    #	- Ask the players for input (gets.chomp)
-#	- Substitute one space on the board with the symbol
 #	- Create a new method that, after placing each symbol, checks whether the current player has three symbols in a row
+
   end
 end
 
