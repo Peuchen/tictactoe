@@ -10,25 +10,23 @@ class Game
 
   def play
     puts $board
-    puts "Player 1, at what position do you want place to place an #{@player1.symbol}?"
-    position = gets.chomp
-    @player1.place_symbol_at(position)
-    puts "Player 2, at what position do you want place to place an #{@player2.symbol}?"
-    position = gets.chomp
-    @player2.place_symbol_at(position)
+    @player1.place_symbol
+    @player2.place_symbol
   end
 end
 
 # Create a class for the players
 class Player
-  attr_reader :symbol
+  attr_reader :symbol, :name
   @@player_count = 0
 
   #- Create a initialize method which includes a symbol to play with
   def initialize
     if @@player_count == 0
+      @name = "Player 1"
       @symbol = :X
     elsif @@player_count == 1
+      @name = "Player 2"
       @symbol = :O
     else
       puts "Tic Tac Toe can only be played by two players"
@@ -37,13 +35,13 @@ class Player
   end
 
   #- Create a method that allows a player to place a symbol on the playing board (the place on the playing board is the argument) 
-  def place_symbol_at(position)
-    @position = position
+  def place_symbol
+    puts "#{self.name}, at what position do you want place to place an #{self.symbol}?"
+    position = gets.chomp
     #	- Substitute one space on the board with the symbol
     $board = $board.sub(position.to_s, self.symbol.to_s)
     puts $board
-#	- Create a new method that, after placing each symbol, checks whether the current player has three symbols in a row
-
+#	- Create a new method that, after placing each symbol, checks whether the current player has three symbols in a row, by using the index numbers of the string $board
   end
 end
 
