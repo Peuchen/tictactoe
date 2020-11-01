@@ -1,5 +1,7 @@
 class Game
   attr_accessor :board
+
+  $win = false
   def initialize
     $board = "1 2 3\n4 5 6\n7 8 9"
     @player1 = Player.new
@@ -10,8 +12,18 @@ class Game
 
   def play
     puts $board
-    @player1.place_symbol
-    @player2.place_symbol
+    while $win == false
+      @player1.place_symbol
+      if $win == true
+        puts "Player 1, you have won!"
+        break
+      end
+      @player2.place_symbol
+      if $win == true
+        puts "Player 2, you have won!"
+        break
+      end
+    end
   end
 end
 
