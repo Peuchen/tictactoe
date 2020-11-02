@@ -53,11 +53,14 @@ class Player
   def place_symbol
     puts "#{self.name}, at what position do you want place to place an #{self.symbol}?"
     position = gets.chomp
+    while $board.include?(position.to_s) == false || position == ""
+      puts "You have not indicated an available position. Please try again."
+      position = gets.chomp
+    end
     #	- Substitute one space on the board with the symbol
     $board = $board.sub(position.to_s, self.symbol.to_s)
     puts $board
     #	- Create a new method that, after placing each symbol, checks whether the current player has three symbols in a row, by using the index numbers of the string $board
-
   end
 
   def has_won?
