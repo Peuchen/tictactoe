@@ -12,10 +12,13 @@ class Game
 
   def play
     puts $board
-    while $win == false
+    loop do
       @player1.place_symbol
       if @player1.has_won?
         puts "Player 1, you have won!"
+        break
+      elsif @player1.has_tied?
+        puts "You have tied!"
         break
       end
       @player2.place_symbol
@@ -54,11 +57,39 @@ class Player
     $board = $board.sub(position.to_s, self.symbol.to_s)
     puts $board
     #	- Create a new method that, after placing each symbol, checks whether the current player has three symbols in a row, by using the index numbers of the string $board
+
   end
 
   def has_won?
-    if $board.count(self.symbol.to_s) == 3
-      puts "Checked"
+    if $board.count(self.symbol.to_s) >= 3
+      if $board[8] == self.symbol.to_s
+        if $board[0] == self.symbol.to_s && $board[16] == self.symbol.to_s
+          return true
+        elsif $board[4] == self.symbol.to_s && $board[12] == self.symbol.to_s
+          return true
+        elsif $board[6] == self.symbol.to_s && $board[10] == self.symbol.to_s
+          return true
+        elsif $board[2] == self.symbol.to_s && $board[8] == self.symbol.to_s
+          return true
+        end
+      elsif $board[0] == self.symbol.to_s
+        if $board[2] == self.symbol.to_s && $board[4] == self.symbol.to_s
+          return true
+        elsif $board[6] == self.symbol.to_s && $board[12] == self.symbol.to_s
+          return true
+        end
+      elsif $board[16] == self.symbol.to_s
+        if $board[4] == self.symbol.to_s && $board[10] == self.symbol.to_s
+          return true
+        elsif $board[12] == self.symbol.to_s && $board[14] == self.symbol.to_s
+          return true
+        end
+      end
+    end
+  end
+
+  def has_tied?
+    if $board.count(self.symbol.to_s) == 5
       return true
     end
   end
