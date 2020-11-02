@@ -14,12 +14,12 @@ class Game
     puts $board
     while $win == false
       @player1.place_symbol
-      if $win == true
+      if @player1.has_won?
         puts "Player 1, you have won!"
         break
       end
       @player2.place_symbol
-      if $win == true
+      if @player2.has_won?
         puts "Player 2, you have won!"
         break
       end
@@ -53,7 +53,14 @@ class Player
     #	- Substitute one space on the board with the symbol
     $board = $board.sub(position.to_s, self.symbol.to_s)
     puts $board
-#	- Create a new method that, after placing each symbol, checks whether the current player has three symbols in a row, by using the index numbers of the string $board
+    #	- Create a new method that, after placing each symbol, checks whether the current player has three symbols in a row, by using the index numbers of the string $board
+  end
+
+  def has_won?
+    if $board.count(self.symbol.to_s) == 3
+      puts "Checked"
+      return true
+    end
   end
 end
 
