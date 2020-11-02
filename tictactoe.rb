@@ -64,30 +64,24 @@ class Player
   end
 
   def has_won?
-    if $board.count(self.symbol.to_s) >= 3
-      if $board[8] == self.symbol.to_s
-        if $board[0] == self.symbol.to_s && $board[16] == self.symbol.to_s
-          return true
-        elsif $board[4] == self.symbol.to_s && $board[12] == self.symbol.to_s
-          return true
-        elsif $board[6] == self.symbol.to_s && $board[10] == self.symbol.to_s
-          return true
-        elsif $board[2] == self.symbol.to_s && $board[8] == self.symbol.to_s
-          return true
-        end
-      elsif $board[0] == self.symbol.to_s
-        if $board[2] == self.symbol.to_s && $board[4] == self.symbol.to_s
-          return true
-        elsif $board[6] == self.symbol.to_s && $board[12] == self.symbol.to_s
-          return true
-        end
-      elsif $board[16] == self.symbol.to_s
-        if $board[4] == self.symbol.to_s && $board[10] == self.symbol.to_s
-          return true
-        elsif $board[12] == self.symbol.to_s && $board[14] == self.symbol.to_s
-          return true
-        end
-      end
+    if ($board[8] == self.symbol.to_s) && ($board[0] == self.symbol.to_s) && ($board[16] == self.symbol.to_s)
+      return true
+    elsif ($board[8] == self.symbol.to_s) && ($board[4] == self.symbol.to_s) && ($board[12] == self.symbol.to_s)
+      return true
+    elsif ($board[8] == self.symbol.to_s) && ($board[6] == self.symbol.to_s) && ($board[10] == self.symbol.to_s)
+      return true
+    elsif ($board[8] == self.symbol.to_s) && ($board[2] == self.symbol.to_s) && ($board[14] == self.symbol.to_s)
+      return true
+    elsif ($board[0] == self.symbol.to_s) && ($board[2] == self.symbol.to_s) && ($board[4] == self.symbol.to_s)
+      return true
+    elsif ($board[0] == self.symbol.to_s) && ($board[6] == self.symbol.to_s) && ($board[12] == self.symbol.to_s)
+      return true
+    elsif ($board[16] == self.symbol.to_s) && ($board[4] == self.symbol.to_s) && ($board[10] == self.symbol.to_s)
+      return true
+    elsif ($board[16] == self.symbol.to_s) && ($board[12] == self.symbol.to_s) && ($board[14] == self.symbol.to_s)
+      return true
+    else
+      return false
     end
   end
 
