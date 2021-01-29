@@ -15,10 +15,10 @@ class Player
 
   def place_symbol
     puts "#{self.name}, at what position do you want place to place an #{self.symbol}?"
-    position = gets.chomp
-    while $board.include?(position.to_s) == false || position == ""
+    position = gets.chomp.to_i
+    until $board.include?(position.to_s)
       puts "You have not indicated an available position. Please try again."
-      position = gets.chomp
+      position = gets.chomp.to_i
     end
 
     $board = $board.sub(position.to_s, self.symbol.to_s)
